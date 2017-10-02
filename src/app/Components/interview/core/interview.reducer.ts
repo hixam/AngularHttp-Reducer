@@ -5,10 +5,10 @@ import {ModelsInterview} from '../../../Models/models.interview';
 
 const initStat = {
   interviews : [
-    new ModelsInterview('Giovani', 'Juan ramos', '15/05/2015'),
-    new ModelsInterview('Giovani', 'Juan ramos', '15/05/2015'),
-    new ModelsInterview('Giovani', 'Juan ramos', '15/05/2015'),
-    new ModelsInterview('Giovani', 'Juan ramos', '15/05/2015'),
+    new ModelsInterview('Giovani', 'Juan ramos', '' + Date.now()),
+    new ModelsInterview('Giovani', 'Juan ramos', '' + Date.now()),
+    new ModelsInterview('Giovani', 'Juan ramos', '' + Date.now()),
+    new ModelsInterview('Giovani', 'Juan ramos', '' + Date.now()),
   ]
 };
 

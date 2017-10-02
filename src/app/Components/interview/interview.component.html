@@ -1,9 +1,10 @@
+
 <div class="container">
   <h2>Component (Interview)</h2>
   <div class="col-xs-12">
 
   <!--<p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>-->
-  <table class="table table-condensed">
+  <table  (clickOutside)= "Unclick()" class="table table-condensed">
     <thead>
     <tr>
       <th>Interviewer</th>
@@ -11,15 +12,28 @@
       <th>Date</th>
     </tr>
     </thead>
-    <tbody *ngFor="let varr of (interviewState | async).interviews">
-    <tr>
-      <td>{{varr.userName}}</td>
-      <td>{{varr.vacantName}}</td>
-      <td>{{varr.fecha}}</td>
+    <tbody *ngFor="let interview of (interviewState | async).interviews ; let i = index">
+
+    <tr (click)="interviewSelected(i,interview)"  [ngClass]="i === count ?  'success': '' ">
+      <td>{{interview.userName}}</td>
+      <td>{{interview.vacantName}}</td>
+      <td>{{interview.fecha | date:'medium'}}</td>
     </tr>
+
 
     </tbody>
   </table>
 </div>
-  <button class="btn btn-danger" (click)= "AddInterview()">ADD</button>
+  <div class="col-xs-12">
+
+    <form (ngSubmit)="UpdateInterview(F)" #F="ngForm">
+    <button type="submit"  [disabled]="!ModifyEnabled" class="btn btn-warning">Submit Edit</button>
+    <input ngModel name="newnameInput" #newnameInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="new name" [value]="name">
+    <input ngModel name="newvacantInput" #newvacantInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="new name" [value]="vacant">
+    </form>
+
+  </div>
+
 </div>
+
+

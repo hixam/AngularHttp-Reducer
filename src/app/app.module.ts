@@ -9,6 +9,7 @@ import { InterviewComponent } from './Components/interview/interview.component';
 import {StoreModule} from '@ngrx/store';
 import {interviewReducer} from './Components/interview/core/interview.reducer';
 import {InterviewService} from './Components/interview/service/interview.service';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {InterviewService} from './Components/interview/service/interview.service
     HttpModule,
     BrowserModule,
     FormsModule,
+    ClickOutsideModule,
     StoreModule.forRoot({interviews: interviewReducer})
   ],
   providers: [InterviewService],

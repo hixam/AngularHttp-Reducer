@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-xs-12">
+
+  <h2>Component (Users)</h2>
+  <!--<p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>-->
+  <table class="table table-condensed">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let varr of users">
+    <tr>
+      <td>{{varr.name}}</td>
+      <td>{{varr.email}}</td>
+      <td>{{varr.phone}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+<div class="col-xs-6 col-xs-offset-5">
+  <button class="btn btn-success" (click)="onAdd()">Add new</button>
+</div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Component (Vacant)</h2>
+  <div class="col-xs-12">
+
+  <!--<p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>-->
+  <table class="table table-condensed">
+    <thead>
+    <tr>
+      <th>Vacant</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Position</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let varr of vacants">
+    <tr>
+      <td>{{varr.name}}</td>
+      <td>{{varr.email}}</td>
+      <td>{{varr.phone}}</td>
+      <td>{{varr.posicion}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+</div>

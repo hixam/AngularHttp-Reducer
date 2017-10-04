@@ -12,9 +12,9 @@
       <th>Date</th>
     </tr>
     </thead>
-    <tbody *ngFor="let interview of (interviewState | async).interviews ; let i = index">
+    <tbody *ngFor="let interview of (interviewState | async).interviews ; let i = index" (click)="interviewSelected(i)">
 
-    <tr (click)="interviewSelected(i,interview)"  [ngClass]="i === count ?  'success': '' ">
+    <tr  [ngClass]="i === count ?  'success': '' ">
       <td>{{interview.userName}}</td>
       <td>{{interview.vacantName}}</td>
       <td>{{interview.fecha | date:'medium'}}</td>
@@ -26,14 +26,17 @@
 </div>
   <div class="col-xs-12">
 
+
     <form (ngSubmit)="UpdateInterview(F)" #F="ngForm">
     <button type="submit"  [disabled]="!ModifyEnabled" class="btn btn-warning">Submit Edit</button>
-    <input ngModel name="newnameInput" #newnameInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="new name" [value]="name">
-    <input ngModel name="newvacantInput" #newvacantInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="new name" [value]="vacant">
+    <input ngModel name="newnameInput" #newnameInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="new name" [(ngModel)]="name" >
+    <input ngModel name="newvacantInput" #newvacantInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="new name" [(ngModel)]="vacant">
     </form>
 
   </div>
-
+  <div class="col-xs-6 col-xs-offset-5">
+    <button class="btn btn-success" (click)="onAdd()">Add new</button>
+  </div>
 </div>
 
 

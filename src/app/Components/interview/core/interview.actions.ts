@@ -3,6 +3,8 @@ import {ModelsInterview} from '../../../Models/models.interview';
 
 export const ADD_INTERVIEW = 'ADD_INTERVIEW';
 export const UPDATE_INTERVIEW = 'UPDATE_INTERVIEW';
+export const START_EDIT = 'START_EDIT';
+export const STOP_EDIT = 'STOP_EDIT';
 
 
 export class AddInterview implements Action {
@@ -12,7 +14,16 @@ export class AddInterview implements Action {
 
 export class UpdateInterview implements Action {
   readonly type = UPDATE_INTERVIEW;
-  constructor(public payload: {index: number, interview: ModelsInterview}) {}
+  constructor(public payload: {interview: ModelsInterview}) {}
 }
 
-export type interviewActions = AddInterview | UpdateInterview;
+export class StartEdit implements Action {
+  readonly type = START_EDIT;
+  constructor(public payload: number) {}
+}
+
+export class StopEdit implements Action {
+  readonly type = STOP_EDIT;
+}
+
+export type interviewActions = AddInterview | UpdateInterview | StartEdit | StopEdit;

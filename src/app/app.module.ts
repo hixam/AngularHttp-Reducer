@@ -10,20 +10,26 @@ import {StoreModule} from '@ngrx/store';
 import {interviewReducer} from './Components/interview/core/interview.reducer';
 import {InterviewService} from './Components/interview/service/interview.service';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { HeaderComponent } from './Components/header/header.component';
+import {AppRoutingModule} from './app-routing.module';
+import { FormsComponent } from './Components/users/forms/forms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VacantesComponent,
     UsersComponent,
-    InterviewComponent
+    InterviewComponent,
+    HeaderComponent,
+    FormsComponent
   ],
   imports: [
     HttpModule,
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     ClickOutsideModule,
-    StoreModule.forRoot({interviews: interviewReducer})
+    StoreModule.forRoot({interviewsList: interviewReducer})
   ],
   providers: [InterviewService],
   bootstrap: [AppComponent]

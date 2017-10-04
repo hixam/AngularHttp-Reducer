@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {Http, RequestOptions, Response} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 
@@ -9,8 +9,16 @@ export class InterviewService {
   constructor(private http: Http) {}
 
   AddInterview() {
-   return this.http.get('http://services.groupkt.com/country/get/iso2code/MA').map(
+    // const headers = new Headers({'Content-Type': 'application/json'});
+    // const headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
+    // const options = new RequestOptions({ headers: headers });
+
+
+//     {headers: headers}
+  //  this.http.head('Access-Control-Allow-Origin', '*');
+    return this.http.get('https://httpbin.org/get?name=test+value+for+name').map(
      (response: Response) => {
+//       response.headers.set('Access-Control-Allow-Origin', '*');
        const data = response.json();
        return data;
      }

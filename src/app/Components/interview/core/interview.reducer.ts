@@ -57,6 +57,15 @@ export function interviewReducer(state = initStat, action: interviewActions.inte
         editedInterview : null,
         editedInterviewIndex : -1
       };
+    case interviewActions.DELETE_INTERVIEW:
+      const oldIngredients = [...state.interviews];
+      oldIngredients.splice(state.editedInterviewIndex, 1);
+      return {
+        ...state,
+        interviews: oldIngredients,
+        editedInterview: null,
+        editedInterviewIndex: -1
+      };
     default :
       return state;
   }

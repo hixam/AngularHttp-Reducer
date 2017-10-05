@@ -1,42 +1,61 @@
 
 <div class="container">
-  <h2>Component (Interview)</h2>
+  <div class="row">
+    <div class="col col-md-12">
+      <div class="alert alert-danger" role="alert">
+        <strong> <h2>Interviews</h2></strong>
+      </div>
+    </div>
+  </div>
   <div class="col-xs-12">
 
-  <!--<p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>-->
-  <table  (clickOutside)= "Unclick()" class="table table-condensed">
-    <thead>
-    <tr>
-      <th>Interviewer</th>
-      <th>Vacant</th>
-      <th>Date</th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let interview of (interviewState | async).interviews ; let i = index" (click)="interviewSelected(i)">
+    <!--<p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>-->
+    <table  (clickOutside)= "Unclick()" class="table table-striped table-bordered table-condensed" >
+      <thead>
+        <tr>
+          <th>Interviewer</th>
+          <th>Vacant</th>
+          <th>Date</th>
+          <th *ngIf="ModifyEnabled">Actions</th>
+        </tr>
+      </thead>
 
-    <tr  [ngClass]="i === count ?  'success': '' ">
-      <td>{{interview.userName}}</td>
-      <td>{{interview.vacantName}}</td>
-      <td>{{interview.fecha | date:'medium'}}</td>
-    </tr>
+      <tbody *ngFor="let interview of (interviewState | async).interviews ; let i = index" (click)="interviewSelected(i)">
+
+      <tr  role="alert" [ngClass]="i === count ?  'alert-danger': '' ">
+
+        <td>{{interview.userName}}</td>
+        <td>{{interview.vacantName}}</td>
+        <td>{{interview.fecha | date:'medium'}}</td>
+        <td *ngIf="ModifyEnabled"><span  class="badge badge-pill badge-danger" role="button" (click)="onClickDelete()">Delete</span></td>
+
+      </tr>
 
 
-    </tbody>
-  </table>
-</div>
-  <div class="col-xs-12">
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+      <div class="col-sm-6">
 
+            <form (ngSubmit)="UpdateInterview(F)" #F="ngForm">
+            <button type="submit"  [disabled]="!ModifyEnabled" class="btn btn-outline-warning" data-toggle="tooltip" data-placement="right" title="Selecciona un registro para editar" >Submit Edit</button>
+            <input ngModel name="newnameInput" #newnameInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="Interviewer name" [(ngModel)]="name" >
+            <input ngModel name="newvacantInput" #newvacantInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="Vacant name" [(ngModel)]="vacant">
+            </form>
 
-    <form (ngSubmit)="UpdateInterview(F)" #F="ngForm">
-    <button type="submit"  [disabled]="!ModifyEnabled" class="btn btn-warning">Submit Edit</button>
-    <input ngModel name="newnameInput" #newnameInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="new name" [(ngModel)]="name" >
-    <input ngModel name="newvacantInput" #newvacantInput="ngModel" [disabled]="!ModifyEnabled" type="text" placeholder="new name" [(ngModel)]="vacant">
-    </form>
+      </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-sm-6">
+
+              <button class="btn btn-outline-danger" (click)="onAdd()">Add new</button>
+
+    </div>
 
   </div>
-  <div class="col-xs-6 col-xs-offset-5">
-    <button class="btn btn-success" (click)="onAdd()">Add new</button>
-  </div>
+
 </div>
 
 

@@ -83,7 +83,7 @@ export class InterviewComponent implements OnInit, OnDestroy {
       err => console.log( 'error !!!!!!!!!' + err),
       () => {
         this.store.dispatch(new interviewActions.AddInterview(
-          new ModelsInterview( 'from users', 'from' + this.result, '' + Date.now())));
+          new ModelsInterview( 'from Http', this.result, '' + Date.now())));
       }
     );
   }
@@ -91,5 +91,7 @@ export class InterviewComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
    this.store.dispatch(new interviewActions.StopEdit());
   }
-
+  onClickDelete() {
+    this.store.dispatch(new interviewActions.DeleteInterview());
+  }
 }
